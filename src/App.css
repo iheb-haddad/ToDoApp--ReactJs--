@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../public/img/background.jpg");
+    min-height: 100vh;
+    background-size: 100% 100%;
+}   
+
