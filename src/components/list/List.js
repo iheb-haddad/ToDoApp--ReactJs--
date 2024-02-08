@@ -1,8 +1,6 @@
-
 import "./List.css"
 function List(props){
 return (
-    <>
     <div className="list">
         <div className="list-title">
         <h2>List Of Tasks</h2>
@@ -18,7 +16,6 @@ return (
             ))}
         </div>
     </div>
-    </>
     )
 }
 

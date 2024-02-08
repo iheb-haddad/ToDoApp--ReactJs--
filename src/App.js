@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputBarr, List } from './components';
 import { useState, useEffect, useRef } from 'react'
+import './App.css'
 
 const App = () => {
   const [tasks, setTasks] = useState(() => {
@@ -34,7 +35,7 @@ const App = () => {
             setTasks([{text:"waiting for your first task",
             state:"empty"}])
             :
-                setTasks(temp)
+          setTasks(temp)
     }
     const handleEdit = (text,index) => {
         if (text !== "waiting for your first task") {
@@ -59,8 +60,10 @@ const App = () => {
   return (
     <div className='container'>
       <div className='sub-container'>
+        <>
         <InputBarr handleAddTask={handleAddTask} form={form} setForm={setForm}/>
         <List tasks={tasks} handleDone={handleDone} handleDelete={handleDelete} handleEdit={handleEdit}/>
+        </>
       </div> 
     </div>
   )
