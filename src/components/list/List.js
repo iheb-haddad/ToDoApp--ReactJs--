@@ -1,6 +1,6 @@
 
 import "./List.css"
-function List(){
+function List(props){
 return (
     <>
     <div className="list">
