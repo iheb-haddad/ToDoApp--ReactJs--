@@ -5,7 +5,7 @@ const InputBarr = (props) => {
     <div className="barr">
         <form onSubmit={props.handleAddTask}>
             Task :
-            <input ref={props.input} type="text" placeholder="Enter new task" value={props.form} onChange={(e)=> props.setForm(e.target.value)} />
+            <input ref={props.inputRef} type="text" placeholder="Enter new task" value={props.form} onChange={(e)=> props.setForm(e.target.value)} />
         </form>
         <button type="submit" onClick={props.handleAddTask}>Add Task</button>
     </div>

@@ -6,51 +6,37 @@ import './App.css'
 const App = () => {
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
-    return storedTasks ? JSON.parse(storedTasks) : [{ text: "waiting for your first task", state: "empty" }];
+    return storedTasks ? JSON.parse(storedTasks) : [];
   });
     const [form, setForm] = useState('')
-    const input = useRef()
+    const inputRef = useRef()
 
     const handleAddTask = (event,index) => {
-    event.preventDefault();
-
-    tasks[0].state==="empty"?
-        form && setTasks([{
-            text: form,
-            done: false
-        }])
-    :
-    form && setTasks([...tasks,
-        {
-            text: form,
-            done: false
-        }])
-    setForm('')
+      event.preventDefault();
+      form && setTasks([...tasks,
+          {
+              text: form,
+              done: false
+          }])
+      setForm('')
     }
 
     const handleDelete = (index) => {
         const temp = [...tasks]
         temp.splice(index,1)
-        temp.length === 0 ? 
-            setTasks([{text:"waiting for your first task",
-            state:"empty"}])
-            :
-          setTasks(temp)
+        setTasks(temp)
     }
-    const handleEdit = (text,index) => {
-        if (text !== "waiting for your first task") {
-            setForm(text);
-            input.current.focus()
-            handleDelete(index)
-        }
 
+    const handleEdit = (text,index) => {
+            setForm(text);
+            inputRef.current.focus()
+            handleDelete(index)
     }
+
     const handleDone = (index) => {
-        if (tasks[index].text !== "waiting for your first task") {
         const temp = [...tasks]
         temp[index].done=true
         setTasks(temp)
-        }
     }
 
     useEffect(() => {
@@ -61,7 +47,7 @@ const App = () => {
     <div className='container'>
       <div className='sub-container'>
         <>
-        <InputBarr handleAddTask={handleAddTask} form={form} setForm={setForm}/>
+        <InputBarr handleAddTask={handleAddTask} form={form} setForm={setForm} inputRef = {inputRef}/>
         <List tasks={tasks} handleDone={handleDone} handleDelete={handleDelete} handleEdit={handleEdit}/>
         </>
       </div> 

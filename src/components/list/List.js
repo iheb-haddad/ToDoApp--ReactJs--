@@ -6,8 +6,9 @@ return (
         <h2>List Of Tasks</h2>
         </div>
         <div className="list-body">
+            { props.tasks.length === 0  && <h3>Waiting for your first task</h3>}
             {props.tasks.map((task,index)=>(
-            <div className="task">
+            <div className="task" key={index}>
                 <h3  style={{ textDecoration: task.done && 'line-through', color: task.done && "grey" }}>{task.text}</h3>
                     <img src="./img/check-box.png" alt="done" onClick={()=>props.handleDone(index)} style={{ width: task.done && '0rem' }}></img>
                     <img src="./img/pen.png" alt="edit" onClick={()=>props.handleEdit(task.text,index) } style={{ width: task.done && '0rem' }}></img>
