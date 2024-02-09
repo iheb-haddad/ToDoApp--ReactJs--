@@ -45,12 +45,8 @@ const App = () => {
 
   return (
     <div className='container'>
-      <div className='sub-container'>
-        <>
         <InputBarr handleAddTask={handleAddTask} form={form} setForm={setForm} inputRef = {inputRef}/>
         <List tasks={tasks} handleDone={handleDone} handleDelete={handleDelete} handleEdit={handleEdit}/>
-        </>
-      </div> 
     </div>
   )
 }

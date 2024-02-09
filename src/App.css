@@ -1,14 +1,15 @@
-.container{
+body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url("../public/img/background.jpg");
     min-height: 100vh;
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
 }   
 @media screen and (max-width:480px) {
-    .container{
+    body{
      justify-content: flex-start;
      padding-top: 15vh;
      padding-bottom: 15vh;
@@ -16,8 +17,8 @@
      min-height: auto;
     }
 }
-.sub-container{
-    min-width: 60vw;
+.container{
+    min-width: 50vw;
     min-height: 70vh;
     border-radius: 30px;
     background-color: white;
@@ -29,12 +30,12 @@
 }
 
 @media screen and (max-width:880px) {
-    .sub-container{
+    .container{
      min-width:70vw;
     }
 }
 @media screen and (max-width:480px) {
-    .sub-container{
+    .container{
      min-width:85vw;
      min-height: 50vh;
     }

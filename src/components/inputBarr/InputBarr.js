@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './InputBarr.css'
 const InputBarr = (props) => {
   return (
     <div className="barr">
