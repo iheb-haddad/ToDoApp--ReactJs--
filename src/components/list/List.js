@@ -1,5 +1,22 @@
 import "./List.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil , faCircleCheck , faTrash } from '@fortawesome/free-solid-svg-icons'
 function List(props){
+        
+      const handleDelete = (id) => {
+          props.setTasks(props.tasks.filter((task)=> task.id!==id))
+      }
+
+      const handleEdit = (task) => {
+              props.setForm(task.text);
+              props.inputRef.current.focus()
+              props.setTaskEdited(task.id)
+      }
+  
+      const handleDone = (id) => {
+        props.setTasks(props.tasks.map((task)=> task.id===id ? {...task,done : !task.done} : task))
+      }
+
 return (
     <div className="list">
         <div className="list-title">
@@ -7,12 +24,17 @@ return (
         </div>
         <div className="list-body">
             { props.tasks.length === 0  && <h3>Waiting for your first task</h3>}
-            {props.tasks.map((task,index)=>(
-            <div className="task" key={index}>
-                <h3  style={{ textDecoration: task.done && 'line-through', color: task.done && "grey" }}>{task.text}</h3>
-                    <img src="./img/check-box.png" alt="done" onClick={()=>props.handleDone(index)} style={{ width: task.done && '0rem' }}></img>
-                    <img src="./img/pen.png" alt="edit" onClick={()=>props.handleEdit(task.text,index) } style={{ width: task.done && '0rem' }}></img>
-                    <img src="./img/trash.png" alt="delete" onClick={()=>props.handleDelete(index)}></img>
+            {props.tasks.map((task)=>(
+            <div className="task" key={task.id}>
+                <h3  className = { task.done ? 'taskDone' : props.taskEdited === task.id ? 'taskEdited' : ''} >{task.text}</h3>
+                { !task.done ?
+                    <div className="icons">
+                        <FontAwesomeIcon icon={faCircleCheck} onClick={()=>handleDone(task.id)} className="icon" style={{color : "green"}}/>
+                        <FontAwesomeIcon icon={faPencil} onClick={()=>handleEdit(task) } className="icon" style={{color : 'blue'}}/> 
+                        <FontAwesomeIcon icon={faTrash} onClick={()=>handleDelete(task.id)} className="icon" style={{color : 'red'}}/>
+                    </div>
+                    : <FontAwesomeIcon icon={faTrash} onClick={()=>handleDelete(task.id)} className="icon" style={{color : 'red'}}/>
+                    }    
             </div>
             ))}
         </div>

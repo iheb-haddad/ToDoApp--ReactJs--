@@ -10,34 +10,7 @@ const App = () => {
   });
     const [form, setForm] = useState('')
     const inputRef = useRef()
-
-    const handleAddTask = (event,index) => {
-      event.preventDefault();
-      form && setTasks([...tasks,
-          {
-              text: form,
-              done: false
-          }])
-      setForm('')
-    }
-
-    const handleDelete = (index) => {
-        const temp = [...tasks]
-        temp.splice(index,1)
-        setTasks(temp)
-    }
-
-    const handleEdit = (text,index) => {
-            setForm(text);
-            inputRef.current.focus()
-            handleDelete(index)
-    }
-
-    const handleDone = (index) => {
-        const temp = [...tasks]
-        temp[index].done=true
-        setTasks(temp)
-    }
+    const [taskEdited , setTaskEdited] = useState('')
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -45,8 +18,8 @@ const App = () => {
 
   return (
     <div className='container'>
-        <InputBarr handleAddTask={handleAddTask} form={form} setForm={setForm} inputRef = {inputRef}/>
-        <List tasks={tasks} handleDone={handleDone} handleDelete={handleDelete} handleEdit={handleEdit}/>
+        <InputBarr form={form} setForm={setForm} tasks={tasks} setTasks={setTasks} inputRef = {inputRef} taskEdited={taskEdited} setTaskEdited={setTaskEdited}/>
+        <List tasks={tasks} setTasks={setTasks} form={form} setForm={setForm} inputRef = {inputRef} taskEdited={taskEdited} setTaskEdited={setTaskEdited}/>
     </div>
   )
 }
