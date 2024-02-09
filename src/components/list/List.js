@@ -5,6 +5,8 @@ function List(props){
         
       const handleDelete = (id) => {
           props.setTasks(props.tasks.filter((task)=> task.id!==id))
+          props.setForm('')
+          props.setTaskEdited('')
       }
 
       const handleEdit = (task) => {
@@ -15,12 +17,14 @@ function List(props){
   
       const handleDone = (id) => {
         props.setTasks(props.tasks.map((task)=> task.id===id ? {...task,done : !task.done} : task))
+        props.setForm('')
+        props.setTaskEdited('')
       }
 
 return (
     <div className="list">
         <div className="list-title">
-        <h2>List Of Tasks</h2>
+            <h2>List Of Tasks</h2>
         </div>
         <div className="list-body">
             { props.tasks.length === 0  && <h3>Waiting for your first task</h3>}

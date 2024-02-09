@@ -34,4 +34,9 @@ form{
     font-family: 'Cambria , regular';
     font-size: 1.5rem;
     flex: 3;
+}
+@media screen and (max-width:480px) {
+    input::placeholder{
+        font-size: 0.9rem;
+    }
 }    

@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className='container'>
         <InputBarr form={form} setForm={setForm} tasks={tasks} setTasks={setTasks} inputRef = {inputRef} taskEdited={taskEdited} setTaskEdited={setTaskEdited}/>
-        <List tasks={tasks} setTasks={setTasks} form={form} setForm={setForm} inputRef = {inputRef} taskEdited={taskEdited} setTaskEdited={setTaskEdited}/>
+        <List tasks={tasks} setTasks={setTasks}  setForm={setForm} inputRef = {inputRef} taskEdited={taskEdited} setTaskEdited={setTaskEdited}/>
     </div>
   )
 }
